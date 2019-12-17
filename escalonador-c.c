@@ -34,7 +34,7 @@ int main(){
 		char *p = str;
 	    j = 0;
 	    
-		while (*p) { // enquanto h· mais caracteres para processar
+		while (*p) { // enquanto h√° mais caracteres para processar
 	    	if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )) { // encontrou um numero
 	        	long val = strtol(p, &p, 10); // leu numero
 	        	m[i-1][j] = val;
@@ -179,7 +179,7 @@ int main(){
 				}								
 				
 				
-				if (cpu[j] != 0){				// 	se o processo n„o for finalizado, insere i/o
+				if (cpu[j] != 0){				// 	se o processo n√£o for finalizado, insere i/o
 					// a = d; 					//	a = d = 30											//a + m[1][2];
 					b = d + m[j][p[j]]; 		//	b = 30 + 4 = 34										//a + m[1][3];
 					
