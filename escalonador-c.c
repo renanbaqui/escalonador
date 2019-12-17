@@ -6,7 +6,7 @@
 
 int main(){
 
-//  char *str = "10 cpu, 4 io, 5 cpu";
+//  char *str = "10 cpu, 4 io, 5 cpu"; //
 		
 	char str[MAX];    	
 	int n, i, j, k, l;
