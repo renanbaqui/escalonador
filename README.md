@@ -1,6 +1,13 @@
-# Sistemas Operacionais I
-*Professor Dr. Tiago Assumpção de Oliveira Alves*
+# Escalonador
 
-Avaliação 2
+Escalonador is a process scheduling simulator written in C language.
 
-Implementação Computacional de um Simulador de Escalonador para 5 Estados
+## Installation
+
+Compile with GCC.
+
+## Contributing
+Pull requests are welcome.
+
+## License
+[Apache License 2.0](https://opensource.org/licenses/Apache-2.0)
