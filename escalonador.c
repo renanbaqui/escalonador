@@ -10,10 +10,10 @@ int main(){
 	int n, i, j, k, l;
 	int pro[MIN]; 				// soma do tempo de execucao total de cada processo
 	int est[MIN][MAX]; 			// estado do [processo] e [posicao]  0 - execucao, 1 - i/o, 2 - pronto, 3 - terminado
-	long soma = 0, a = 0, b = 0, c, d, e;
+	long soma = 0, a = 0, b = 0, c, d, e;	// soma dos tempos sem escalonamento
 	long cpu[MIN];  			// tempo de execucao de cada [processo]
-	long p[MIN];				// posicao  do [processo] em est[MIN][MAX] = est[MIN][p[MIN]]
-	long total = 0;				// soma total de todos os tempos de execucao dos processos
+	long p[MIN];				// posicao do [processo] em est[MIN][MAX] = est[MIN][p[MIN]]
+	long total = 0;				// soma total de todos os tempos de execucao dos processos com escalonamento
 	long m[MIN][MIN]; 			// [processo][cpu ou i/o] par = cpu, impar = i/o
 	printf("numero de processos:\n");
 	scanf("%d", &n);	
@@ -21,8 +21,8 @@ int main(){
 	
 	for (i=0; i<n; i++){
 		cpu[i] = 0;
-		p[i] = 2; 			// comeca no '2' pois todos os primeiros cpu e i/o bursts de cada processo 
-	}					// ja sao preenchidos
+		p[i] = 2; 			// comeca no '2' pois todos os primeiros 'cpu' e 'i/o bursts' de cada processo 
+	}					// ja sao preenchidos 
 	
 	for (i=0; i<n+1; i++){
 	
@@ -31,9 +31,9 @@ int main(){
 		char *p = str;
 	    	j = 0;
 	    
-		while (*p){ 									// enquanto há mais caracteres para processar
+		while (*p){ 									// enquanto ha mais caracteres para processar
 	    		if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )){ 	// encontrou um numero
-	        		long val = strtol(p, &p, 10); // leu numero
+	        		long val = strtol(p, &p, 10); 					// leu numero
 	        		m[i-1][j] = val;
 				if (j == 0 || j%2 == 0){			
 					cpu[i-1] = cpu[i-1] + m[i-1][j];
@@ -43,7 +43,7 @@ int main(){
 				soma = soma + val;				
 				j++;				
 	    		} 
-			else { 	// do contrario, mover para o proximo caractere
+			else { 									// do contrario, mover para o proximo caractere
 	        		p++;
 	    		}
 		}				
@@ -80,7 +80,7 @@ int main(){
 	for (i=a; i<MAX; i++){					
 		for (j=0; j<n; j++){					
 			if(est[j][i] == 2){					// procura o proximo estado 'pronto'
-				b = i + m[j][p[j]];				// define a posicao final b
+				b = i + m[j][p[j]];				// define a posicao final 'b'
 				printf("b: %d\n", b);				
 				cpu[j] = cpu[j] - m[j][p[j]]; 			// retira de cpu[] a quantidade de cpu bursts a ser inserida
 				printf("cpu[%d]: %d\n", j, cpu[j]); 
@@ -104,11 +104,11 @@ int main(){
 				}								
 				
 				
-				if (cpu[j] != 0){			// se o processo não for finalizado, insere i/o
+				if (cpu[j] != 0){			// se o processo não for finalizado, insere 'i/o'
 					
 					b = d + m[j][p[j]]; 		
 					
-					for (k=d; k<b; k++){		//insere i/o
+					for (k=d; k<b; k++){		// insere 'i/o'
 						est[j][k] = 1;		
 					}	
 					p[j] = p[j] + 1;		// adiciona posicao
