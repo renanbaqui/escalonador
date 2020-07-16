@@ -9,13 +9,13 @@ int main(){
 	char str[MAX];    	
 	int n, i, j, k, l;
 	int pro[MIN]; 				// soma do tempo de execucao total de cada processo
-	int est[MIN][MAX]; 			// estado do [processo] e [posicao]  0 - execucao, 1 - i/o, 2 - pronto, 3 - terminado
+	int est[MIN][MAX]; 			// estado do [processo] e [posicao], sendo os processos  0 - execucao, 1 - i/o, 2 - pronto, 3 - terminado
 	long soma = 0, a = 0, b = 0, c, d, e;	// soma dos tempos sem escalonamento
 	long cpu[MIN];  			// tempo de execucao de cada [processo]
 	long p[MIN];				// posicao do [processo] em est[MIN][MAX] = est[MIN][p[MIN]]
 	long total = 0;				// soma total de todos os tempos de execucao dos processos com escalonamento
-	long m[MIN][MIN]; 			// [processo][cpu ou i/o] par = cpu, impar = i/o
-	printf("numero de processos:\n");
+	long m[MIN][MIN]; 			// m[processo][cpu ou i/o] par = cpu, impar = i/o
+	printf("digite o numero de processos:\n");
 	scanf("%d", &n);	
 	printf("insira os processos:\n");
 	
@@ -50,7 +50,7 @@ int main(){
 	}
 
 	printf("soma dos tempos (sem escalonamento): %ld\n", soma);
-	printf("soma de todos os tempos de execucao: %ld\n", total);
+	printf("soma dos tempos de execucao: %ld\n", total);
 	
 	for (i=0; i<n; i++){ 		// preenche todos os estados com valor '2' - pronto
 		for (j=0; j<MAX; j++){
@@ -92,32 +92,32 @@ int main(){
 				}
 				
 				d = k;
-				i = k ;					// 'i' recebe a ultima posicao inserida
+				i = k ;						// 'i' recebe a ultima posicao inserida
 				
 				printf("i: %d\n", i);
-				p[j] = p[j] + 1; 			// adiciona posicao
+				p[j] = p[j] + 1; 				// adiciona posicao
 								
-				if (cpu[j] == 0){			// se o processo ja foi todo executado, insere 'finalizado' 
+				if (cpu[j] == 0){				// se o processo ja foi todo executado, insere 'finalizado' 
 					for (k=b; k<MAX; k++){		
 						est[j][k] = 3;
 					}
 				}								
 				
 				
-				if (cpu[j] != 0){			// se o processo não for finalizado, insere 'i/o'
+				if (cpu[j] != 0){				// se o processo não for finalizado, insere 'i/o'
 					
 					b = d + m[j][p[j]]; 		
 					
-					for (k=d; k<b; k++){		// insere 'i/o'
+					for (k=d; k<b; k++){			// insere 'i/o'
 						est[j][k] = 1;		
 					}	
-					p[j] = p[j] + 1;		// adiciona posicao
+					p[j] = p[j] + 1;			// adiciona posicao
 				}
 			}				
 		}
 	}	
 	
-	for (i=0; i<n; i++){						// imprime a matriz de estados
+	for (i=0; i<n; i++){							// imprime a matriz de estados
 		for (j=0; j<d; j++){
 			printf("%d ", est[i][j]);
 			if (j == d-1){
