@@ -1,6 +1,6 @@
 # Escalonador
 
-Escalonador is a process scheduling simulator written in C language.
+Escalonador is a five-state process scheduling simulator written in C language.
 
 ## Installation
 
