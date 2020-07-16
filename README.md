@@ -4,7 +4,7 @@ Escalonador is a process scheduling simulator written in C language.
 
 ## Installation
 
-Compile with GCC.
+Compile with GCC and execute.
 
 ## Contributing
 Pull requests are welcome.
