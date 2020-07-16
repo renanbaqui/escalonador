@@ -117,6 +117,7 @@ int main(){
 		}
 	}	
 	
+	printf("matriz de estados\n");
 	for (i=0; i<n; i++){							// imprime a matriz de estados
 		for (j=0; j<d; j++){
 			printf("%d ", est[i][j]);
