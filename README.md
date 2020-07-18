@@ -1,6 +1,6 @@
 # Escalonador
 
-Escalonador is a FCFS five-state process scheduling simulator written in C language.
+Escalonador is a FCFS (with I/O bursts) five-state CPU process scheduling simulator written in C language.
 
 ## Installation
 
