@@ -1,10 +1,10 @@
 # Escalonador
 
-Escalonador is a five-state process scheduling simulator written in C language.
+Escalonador is a FCFS five-state process scheduling simulator written in C language.
 
 ## Installation
 
-Compile with GCC and execute.
+Compile with [GCC](https://gcc.gnu.org/) and execute.
 
 ## Contributing
 Pull requests are welcome.
