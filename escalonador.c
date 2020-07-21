@@ -15,6 +15,7 @@ int main(){
 	long p[MIN];				// posicao do [processo] em est[MIN][MAX] = est[MIN][p[MIN]]
 	long total = 0;				// soma total de todos os tempos de execucao dos processos com escalonamento
 	long m[MIN][MIN]; 			// m[processo][cpu ou i/o] par = cpu, impar = i/o
+	
 	printf("digite o numero de processos:\n");
 	scanf("%d", &n);	
 	printf("insira os processos:\n");
@@ -32,7 +33,7 @@ int main(){
 	    	j = 0;
 	    
 		while (*p){ 									// enquanto ha mais caracteres para processar
-	    		if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )){ 	// encontrou um numero
+	    		if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )){ 	// se encontrou um numero
 	        		long val = strtol(p, &p, 10); 					// leu numero
 	        		m[i-1][j] = val;
 				if (j == 0 || j%2 == 0){			
@@ -97,7 +98,7 @@ int main(){
 				printf("i: %d\n", i);
 				p[j] = p[j] + 1; 				// adiciona posicao
 								
-				if (cpu[j] == 0){				// se o processo ja foi todo executado, insere 'finalizado' 
+				if (cpu[j] == 0){				// se o processo ja foi todo executado, insere o estado 'terminado' 
 					for (k=b; k<MAX; k++){		
 						est[j][k] = 3;
 					}
