@@ -8,7 +8,7 @@ int main(){
 		
 	char str[MAX];    	
 	int n, i, j, k, l;
-	int pro[MIN]; 				// soma do tempo de execucao total de cada processo
+	int pro[MIN]; 				// soma do tempo de execucao total de cada [processo]
 	int est[MIN][MAX]; 			// estado do [processo] e [posicao], sendo os processos  0 - execucao, 1 - i/o, 2 - pronto, 3 - terminado
 	long soma = 0, a = 0, b = 0, c, d, e;	// soma dos tempos sem escalonamento
 	long cpu[MIN];  			// tempo de execucao de cada [processo]
@@ -22,8 +22,8 @@ int main(){
 	
 	for (i=0; i<n; i++){
 		cpu[i] = 0;
-		p[i] = 2; 			// comeca no '2' pois todos os primeiros 'cpu' e 'i/o bursts' de cada processo 
-	}					// ja sao preenchidos 
+		p[i] = 2; 			// comeca no '2' pois todos os primeiros 'cpu' e 'i/o bursts' de cada processo ja foram preenchidos 
+	}					 
 	
 	for (i=0; i<n+1; i++){
 	
