@@ -1,4 +1,6 @@
-# Escalonador [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+# Escalonador [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![Test](https://badgen.net/badge/icon/windows?icon=windows&label)](https://badgen.net/badge/icon/windows?icon=windows&label)
+
+
 
 
 Escalonador is a FCFS (with I/O bursts) five-state CPU process scheduling simulator written in C language.
