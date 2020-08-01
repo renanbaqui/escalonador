@@ -1,7 +1,4 @@
-# Escalonador [<img src="https://i.imgur.com/oMcxwZ0.png" alt="Eva Design System" height="20px" />][link:eva] [![npm][badge:license]]() [![Build Status][badge:github-actions]][link:github-actions] [![Coverage Status][badge:coveralls]][link:coveralls]
-
-[Documentation][link:doc-homepage]
-
+# Escalonador [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 
 Escalonador is a FCFS (with I/O bursts) five-state CPU process scheduling simulator written in C language.
