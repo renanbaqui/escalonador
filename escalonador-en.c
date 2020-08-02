@@ -50,8 +50,8 @@ int main(){
 		}				
 	}
 
-	printf("soma dos tempos (sem escalonamento): %ld\n", soma);
-	printf("soma dos tempos de execucao: %ld\n", total);
+	printf("sum of times (no scheduling): %ld\n", soma);
+	printf("sum of running times: %ld\n", total);
 	
 	for (i=0; i<n; i++){ 		// fills all states with value '2' - ready
 		for (j=0; j<MAX; j++){
@@ -59,7 +59,7 @@ int main(){
 		}		
 	}	
 		
-	for (i=0; i<n; i++){		// insert all the firts 'cpu' and 'i/o burst' of each process
+	for (i=0; i<n; i++){		// insert all the first 'cpu' and 'i/o burst' of each process
 		
 		b = a + m[i][0]; 	
 		
