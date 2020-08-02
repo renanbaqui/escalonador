@@ -8,21 +8,21 @@ int main(){
 		
 	char str[MAX];    	
 	int n, i, j, k, l;
-	int pro[MIN]; 				// soma do tempo de execucao total de cada [processo]
-	int est[MIN][MAX]; 			// estado do [processo] e [posicao], sendo os processos  0 - execucao, 1 - i/o, 2 - pronto, 3 - terminado
-	long soma = 0, a = 0, b = 0, c, d, e;	// soma dos tempos sem escalonamento
-	long cpu[MIN];  			// tempo de execucao de cada [processo]
-	long p[MIN];				// posicao do [processo] em est[MIN][MAX] = est[MIN][p[MIN]]
-	long total = 0;				// soma total de todos os tempos de execucao dos processos com escalonamento
-	long m[MIN][MIN]; 			// m[processo][cpu ou i/o] par = cpu, impar = i/o
+	int pro[MIN]; 				// total sum of execution time of each [process]
+	int est[MIN][MAX]; 			// [process] state and [position], processes:  0 - running, 1 - i/o, 2 - ready, 3 - finished
+	long soma = 0, a = 0, b = 0, c, d, e;	// sum of all times without scheduling
+	long cpu[MIN];  			// execution (running) time of each [process]
+	long p[MIN];				// [process] position at est[MIN][MAX] = est[MIN][p[MIN]]
+	long total = 0;				// total sum of all execution (running) times with scheduling
+	long m[MIN][MIN]; 			// m[process][cpu or i/o]; even = cpu, odd = i/o
 	
-	printf("digite o numero de processos:\n");
+	printf("enter the number of processes:\n");
 	scanf("%d", &n);	
-	printf("insira os processos:\n");
+	printf("enter the processes:\n");
 	
 	for (i=0; i<n; i++){
 		cpu[i] = 0;
-		p[i] = 2; 			// comeca no '2' pois todos os primeiros 'cpu' e 'i/o bursts' de cada processo ja foram preenchidos 
+		p[i] = 2; 			// starts at '2' because all the first 'cpu' and 'i/o burst' of each process has already been filled in the matrix 
 	}					 
 	
 	for (i=0; i<n+1; i++){
@@ -32,9 +32,9 @@ int main(){
 		char *p = str;
 	    	j = 0;
 	    
-		while (*p){ 									// enquanto ha mais caracteres para processar
-	    		if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )){ 	// se encontrou um numero
-	        		long val = strtol(p, &p, 10); 					// leu numero
+		while (*p){ 									// while there are more characters to process
+	    		if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )){ 	// 'if' finds a number
+	        		long val = strtol(p, &p, 10); 					// read the number
 	        		m[i-1][j] = val;
 				if (j == 0 || j%2 == 0){			
 					cpu[i-1] = cpu[i-1] + m[i-1][j];
@@ -44,7 +44,7 @@ int main(){
 				soma = soma + val;				
 				j++;				
 	    		} 
-			else { 									// do contrario, mover para o proximo caractere
+			else { 									// else, moves to next character 
 	        		p++;
 	    		}
 		}				
@@ -53,39 +53,39 @@ int main(){
 	printf("soma dos tempos (sem escalonamento): %ld\n", soma);
 	printf("soma dos tempos de execucao: %ld\n", total);
 	
-	for (i=0; i<n; i++){ 		// preenche todos os estados com valor '2' - pronto
+	for (i=0; i<n; i++){ 		// fills all states with value '2' - ready
 		for (j=0; j<MAX; j++){
 			est[i][j] = 2;			
 		}		
 	}	
 		
-	for (i=0; i<n; i++){		// insere todos os primeiros cpu e i/o bursts de cada processo
+	for (i=0; i<n; i++){		// insert all the firts 'cpu' and 'i/o burst' of each process
 		
 		b = a + m[i][0]; 	
 		
 		for (j=a; j<b; j++){ 
-			est[i][j] = 0;			// insere os cpu bursts	
+			est[i][j] = 0;			// inserts 'cpu' 	
 		}
 		
-		cpu[i] = cpu[i] - m[i][0];		// diminui de cpu[i] o cpu burst
-		total = total - m[i][0];		// diminui de total o cpu burst do processo
+		cpu[i] = cpu[i] - m[i][0];		// subtracts 'cpu burst' from cpu[i] 
+		total = total - m[i][0];		// subtracts from 'total' the process' cpu burst
 		
 		a = b; 				
 		b = b + m[i][1];	
 		
 		for (j=a; j<b; j++){
-			est[i][j] = 1;			// insere os i/o bursts
+			est[i][j] = 1;			// inserts 'i/o bursts'
 		}	
 	}
 	
 	for (i=a; i<MAX; i++){					
 		for (j=0; j<n; j++){					
-			if(est[j][i] == 2){					// procura o proximo estado 'pronto'
-				b = i + m[j][p[j]];				// define a posicao final 'b'
+			if(est[j][i] == 2){					// looks for the next 'ready' state
+				b = i + m[j][p[j]];				// defines the final 'b' position
 				printf("b: %d\n", b);				
-				cpu[j] = cpu[j] - m[j][p[j]]; 			// retira de cpu[] a quantidade de cpu bursts a ser inserida
+				cpu[j] = cpu[j] - m[j][p[j]]; 			// subtracts from cpu[] how many 'cpu bursts' are to be inserted
 				printf("cpu[%d]: %d\n", j, cpu[j]); 
-				total = total - m[j][p[j]];			// retira do total a quantidade de cpu bursts a ser inserida
+				total = total - m[j][p[j]];			// subtracts from total how many 'cpu bursts' are to be inserted
 				printf("total: %d\n", total);
 				
 				for (k=i; k<b; k++){
@@ -93,33 +93,33 @@ int main(){
 				}
 				
 				d = k;
-				i = k ;						// 'i' recebe a ultima posicao inserida
+				i = k ;						// 'i' receives the last inserted position
 				
 				printf("i: %d\n", i);
-				p[j] = p[j] + 1; 				// adiciona posicao
+				p[j] = p[j] + 1; 				// adds position
 								
-				if (cpu[j] == 0){				// se o processo ja foi todo executado, insere o estado 'terminado' 
+				if (cpu[j] == 0){				// if the process has already been executed, insert the status 'finished'
 					for (k=b; k<MAX; k++){		
 						est[j][k] = 3;
 					}
 				}								
 				
 				
-				if (cpu[j] != 0){				// se o processo não for finalizado, insere 'i/o'
+				if (cpu[j] != 0){				// if the process hasn't been finished, inserts 'i/o'
 					
 					b = d + m[j][p[j]]; 		
 					
-					for (k=d; k<b; k++){			// insere 'i/o'
+					for (k=d; k<b; k++){			// inserts 'i/o'
 						est[j][k] = 1;		
 					}	
-					p[j] = p[j] + 1;			// adiciona posicao
+					p[j] = p[j] + 1;			// adds position
 				}
 			}				
 		}
 	}	
 	
-	printf("matriz de estados\n");
-	for (i=0; i<n; i++){							// imprime a matriz de estados
+	printf("state matrix\n");
+	for (i=0; i<n; i++){							// prints state matrix
 		for (j=0; j<d; j++){
 			printf("%d ", est[i][j]);
 			if (j == d-1){
@@ -128,7 +128,7 @@ int main(){
 		}
 	}	
 	
-	printf("saida: %d unidades de tempo\n", b);
+	printf("output: %d time units\n", b);
 	
     return 0;
 }
