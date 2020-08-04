@@ -59,7 +59,7 @@ int main(){
 		}		
 	}	
 		
-	for (i=0; i<n; i++){		// insert all the first 'cpu' and 'i/o burst' of each process
+	for (i=0; i<n; i++){		// inserts all the first 'cpu' and 'i/o burst' of each process
 		
 		b = a + m[i][0]; 	
 		
