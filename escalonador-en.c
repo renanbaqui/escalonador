@@ -82,11 +82,11 @@ int main(){
 		for (j=0; j<n; j++){					
 			if(est[j][i] == 2){					// looks for the next 'ready' state
 				b = i + m[j][p[j]];				// defines the final 'b' position
-				printf("b: %d\n", b);				
+				printf("b: %ld\n", b);				
 				cpu[j] = cpu[j] - m[j][p[j]]; 			// subtracts from cpu[] how many 'cpu bursts' are to be inserted
-				printf("cpu[%d]: %d\n", j, cpu[j]); 
+				printf("cpu[%d]: %ld\n", j, cpu[j]); 
 				total = total - m[j][p[j]];			// subtracts from total how many 'cpu bursts' are to be inserted
-				printf("total: %d\n", total);
+				printf("total: %ld\n", total);
 				
 				for (k=i; k<b; k++){
 					est[j][k] = 0;					
@@ -127,8 +127,8 @@ int main(){
 			}		
 		}
 	}	
-	
-	printf("output: %d time units\n", b);
+	printf("0 - running\n1 - i/o\n2 - ready\n3 - finished\n");
+	printf("output: %ld time units\n", b);
 	
     return 0;
 }
