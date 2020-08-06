@@ -4,7 +4,7 @@ Escalonador is a FCFS (with I/O bursts) five-state CPU process scheduling simula
 
 ## Installation
 
-Compile with [GCC](https://gcc.gnu.org/) and execute.
+Compile *escalonador-en.c* (English) or *escalonador.c* (Portuguese) with [GCC](https://gcc.gnu.org/) and execute.
 
 ## Contributing
 Pull requests are welcome.
