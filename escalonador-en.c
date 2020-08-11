@@ -18,7 +18,7 @@ int main(){
 	
 	printf("enter the number of processes:\n");
 	scanf("%d", &n);	
-	printf("enter the processes:\n");
+	printf("e.g. 10 cpu 1 io 3 cpu\nenter the processes:\n");
 	
 	for (i=0; i<n; i++){
 		cpu[i] = 0;
