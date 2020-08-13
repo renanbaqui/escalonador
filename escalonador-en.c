@@ -1,3 +1,7 @@
+//=============================================================================
+// escalonador_en v1.2
+//=============================================================================
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
@@ -119,7 +123,7 @@ int main(){
 	}	
 	
 	printf("state matrix\n");
-	for (i=0; i<n; i++){							// prints state matrix
+	for (i=0; i<n; i++){							
 		for (j=0; j<d; j++){
 			printf("%d ", est[i][j]);
 			if (j == d-1){
