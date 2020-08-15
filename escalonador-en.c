@@ -22,7 +22,7 @@ int main(){
 	
 	printf("enter the number of processes:\n");
 	scanf("%d", &n);	
-	printf("e.g. 10 cpu 1 io 3 cpu\nenter the processes:\n");
+	printf("enter the processes:\ne.g. 10 cpu, 1 io, 3 cpu\n");
 	
 	for (i=0; i<n; i++){
 		cpu[i] = 0;
@@ -97,7 +97,7 @@ int main(){
 				}
 				
 				d = k;
-				i = k ;						// 'i' receives the last inserted position
+				i = k - 1;						// 'i' receives the last inserted position
 				
 //				printf("i: %d\n", i);
 				p[j] = p[j] + 1; 				// adds position
@@ -122,7 +122,7 @@ int main(){
 		}
 	}	
 	
-	printf("state matrix\n");
+	printf("state matrix\n\n");
 	for (i=0; i<n; i++){							
 		for (j=0; j<d; j++){
 			printf("%d ", est[i][j]);
