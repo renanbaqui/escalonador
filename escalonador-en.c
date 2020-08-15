@@ -97,7 +97,12 @@ int main(){
 				}
 				
 				d = k;
-				i = k - 1;						// 'i' receives the last inserted position
+				if (n == 2){					// review this
+					i = k - 1;				// review this					
+				}
+				else {
+					i = k;					// 'i' receives the last inserted position (it works for 3+ processes)
+				}
 				
 //				printf("i: %d\n", i);
 				p[j] = p[j] + 1; 				// adds position
