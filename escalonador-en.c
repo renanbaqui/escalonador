@@ -1,5 +1,5 @@
 //=============================================================================
-// escalonador_en SemVer 0.1.4
+// escalonador_en SemVer v0.1.4
 //=============================================================================
 
 #include <stdio.h>
@@ -11,7 +11,7 @@
 int main(){
 		
 	char str[MAX];    	
-	int n, i, j, k, l;
+	int n, i, j, k, l;			// n = number of processes
 	int pro[MIN]; 				// total sum of execution time of each [process]
 	int est[MIN][MAX]; 			// [process] state and [position], processes:  0 - running, 1 - i/o, 2 - ready, 3 - finished
 	long soma = 0, a = 0, b = 0, c, d, e;	// sum of all times without scheduling
@@ -24,7 +24,7 @@ int main(){
 	scanf("%d", &n);	
 	printf("enter the processes:\ne.g. 10 cpu, 1 io, 3 cpu\n");
 	
-	for (i=0; i<n; i++){
+	for (i=0; i<n; i++){			// 
 		cpu[i] = 0;
 		p[i] = 2; 			// starts at '2' because all the first 'cpu' and 'i/o burst' of each process has already been filled in the matrix 
 	}					 
