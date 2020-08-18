@@ -14,7 +14,7 @@ int main(){
 	int n, i, j, k, l;			// n = number of processes
 	int pro[MIN]; 				// total sum of execution time of each [process]
 	int est[MIN][MAX]; 			// [process] state and [position], processes:  0 - running, 1 - i/o, 2 - ready, 3 - finished
-	long soma = 0, a = 0, b = 0, c, d, e;	// sum of all times without scheduling
+	long soma = 0, a = 0, b = 0, c, d, e;	// soma = sum of all times without scheduling
 	long cpu[MIN];  			// execution (running) time of each [process]
 	long p[MIN];				// [process] position at est[MIN][MAX] = est[MIN][p[MIN]]
 	long total = 0;				// total sum of all execution (running) times with scheduling
@@ -38,7 +38,7 @@ int main(){
 	    
 		while (*p){ 									// while there are more characters to process
 	    		if ( isdigit(*p) || ( (*p=='-'||*p=='+') && isdigit(*(p+1)) )){ 	// 'if' finds a number
-	        		long val = strtol(p, &p, 10); 					// read the number
+	        		long val = strtol(p, &p, 10); 					// reads the number
 	        		m[i-1][j] = val;
 				if (j == 0 || j%2 == 0){			
 					cpu[i-1] = cpu[i-1] + m[i-1][j];
@@ -63,12 +63,12 @@ int main(){
 		}		
 	}	
 		
-	for (i=0; i<n; i++){		// inserts all the first 'cpu' and 'i/o burst' of each process
+	for (i=0; i<n; i++){		// inserts all the first 'cpu bursts' and 'i/o bursts' of each process
 		
 		b = a + m[i][0]; 	
 		
 		for (j=a; j<b; j++){ 
-			est[i][j] = 0;			// inserts 'cpu' 	
+			est[i][j] = 0;			// inserts 'cpu burst' 	
 		}
 		
 		cpu[i] = cpu[i] - m[i][0];		// subtracts 'cpu burst' from cpu[i] 
