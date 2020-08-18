@@ -97,8 +97,8 @@ int main(){
 				}
 				
 				d = k;
-				if (n == 2){					// review this
-					i = k - 1;				// review this					
+				if (n == 2){					// review this!
+					i = k - 1;				// review this!					
 				}
 				else {
 					i = k;					// 'i' receives the last inserted position (it works for 3+ processes)
