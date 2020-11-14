@@ -127,8 +127,8 @@ int main(){
 		}
 	}	
 	
-	printf("state matrix\n\n");
-	for (i=0; i<n; i++){							
+	printf("state matrix\n\n");						// prints matrix
+	for (i=0; i<n; i++){								
 		for (j=0; j<d; j++){
 			printf("%d ", est[i][j]);
 			if (j == d-1){
